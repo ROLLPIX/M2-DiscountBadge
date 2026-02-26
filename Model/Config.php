@@ -70,11 +70,13 @@ class Config
     {
         $prefix = self::XML_PATH_PREFIX . $group . '/';
 
+        $position = (string) $this->scopeConfig->getValue(
+            $prefix . 'position',
+            ScopeInterface::SCOPE_STORE
+        );
+
         return [
-            'position' => (string) $this->scopeConfig->getValue(
-                $prefix . 'position',
-                ScopeInterface::SCOPE_STORE
-            ),
+            'position' => $position !== '' ? $position : 'after_old_price_inline',
             'backgroundColor' => (string) $this->scopeConfig->getValue(
                 $prefix . 'background_color',
                 ScopeInterface::SCOPE_STORE

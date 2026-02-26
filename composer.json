@@ -2,7 +2,7 @@
     "name": "rollpix/module-discount-badge",
     "description": "Dynamic discount percentage badge for Magento 2 product prices",
     "type": "magento2-module",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "license": "MIT",
     "authors": [
         {

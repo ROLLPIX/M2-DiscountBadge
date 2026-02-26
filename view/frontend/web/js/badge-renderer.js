@@ -9,15 +9,26 @@ define(['jquery'], function ($) {
 
     var config = null;
     var BADGE_CLASS = 'rollpix-discount-badge';
+    var DEFAULT_POSITION = 'after_old_price_inline';
 
     var renderer = {
 
         /**
-         * Store configuration from admin
+         * Store configuration from admin.
+         * Applies backward compatibility for config from cached pages (pre-1.2.0).
          * @param {Object} cfg
          */
         setConfig: function (cfg) {
             config = cfg;
+
+            // Ensure pdpStyles and listingStyles exist (backward compat with FPC from older versions)
+            if (!config.pdpStyles) {
+                config.pdpStyles = {};
+            }
+
+            if (!config.listingStyles) {
+                config.listingStyles = {};
+            }
         },
 
         /**
@@ -151,8 +162,8 @@ define(['jquery'], function ($) {
          */
         _createBadgeElement: function (text, badgeId) {
             var isPdp = $('body').hasClass('catalog-product-view');
-            var styles = isPdp ? config.pdpStyles : config.listingStyles;
-            var badgeStyle = config.badgeStyle;
+            var styles = (isPdp ? config.pdpStyles : config.listingStyles) || {};
+            var badgeStyle = config.badgeStyle || 'filled';
             var position = this._normalizePosition(styles.position);
 
             // Build CSS classes
@@ -248,7 +259,7 @@ define(['jquery'], function ($) {
          */
         _placeBadge: function ($priceBox, $badge) {
             var isPdp = $('body').hasClass('catalog-product-view');
-            var styles = isPdp ? config.pdpStyles : config.listingStyles;
+            var styles = (isPdp ? config.pdpStyles : config.listingStyles) || {};
             var position = this._normalizePosition(styles.position);
 
             if (position === 'below_price') {
@@ -264,10 +275,15 @@ define(['jquery'], function ($) {
 
         /**
          * Normalize legacy position values to current format.
+         * Returns a safe default if position is falsy/undefined.
          * @param {string} position
          * @returns {string}
          */
         _normalizePosition: function (position) {
+            if (!position) {
+                return DEFAULT_POSITION;
+            }
+
             var legacy = {
                 'after_old_price': 'after_old_price_block',
                 'before_old_price': 'before_old_price_block',
