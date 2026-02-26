@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="rollpix" translate="label" sortOrder="400">
+            <label>Rollpix</label>
+        </tab>
+
+        <section id="rollpix_discountbadge" translate="label" sortOrder="900"
+                 showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Discount Badge</label>
+            <tab>rollpix</tab>
+            <resource>Rollpix_DiscountBadge::config</resource>
+
+            <!-- General Settings -->
+            <group id="general" translate="label" sortOrder="10"
+                   showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+
+                <field id="enabled" translate="label comment" type="select" sortOrder="10"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <comment>Enable or disable the discount badge globally.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="min_discount" translate="label comment" type="text" sortOrder="20"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Minimum Discount (%)</label>
+                    <comment>Minimum discount percentage to show the badge (1-99).</comment>
+                    <validate>required-entry validate-digits validate-digits-range digits-range-1-99</validate>
+                </field>
+
+                <field id="text_template" translate="label comment" type="text" sortOrder="30"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Badge Text Template</label>
+                    <comment>Use {discount} as placeholder. Example: {discount}% OFF</comment>
+                    <validate>required-entry</validate>
+                </field>
+
+                <field id="position" translate="label comment" type="select" sortOrder="40"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Badge Position</label>
+                    <comment>Where to display the badge relative to the price.</comment>
+                    <source_model>Rollpix\DiscountBadge\Model\Config\Source\BadgePosition</source_model>
+                </field>
+
+                <field id="badge_style" translate="label comment" type="select" sortOrder="50"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Badge Style</label>
+                    <comment>Visual style variant of the badge.</comment>
+                    <source_model>Rollpix\DiscountBadge\Model\Config\Source\BadgeStyle</source_model>
+                </field>
+            </group>
+
+            <!-- PDP Styles -->
+            <group id="pdp_styles" translate="label comment" sortOrder="20"
+                   showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Styles - Product Detail Page (PDP)</label>
+                <comment>Visual styles for the badge on the product detail page.</comment>
+
+                <field id="background_color" translate="label comment" type="text" sortOrder="10"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Color</label>
+                    <comment>Hex color code (e.g., #E91E8C). For outline/pill_outline styles, this sets the border and text color. For text_only, this sets the text color.</comment>
+                    <validate>required-entry</validate>
+                </field>
+
+                <field id="text_color" translate="label comment" type="text" sortOrder="20"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text Color</label>
+                    <comment>Hex color code (e.g., #FFFFFF). Used in filled and pill styles.</comment>
+                    <validate>required-entry</validate>
+                </field>
+
+                <field id="font_size" translate="label comment" type="text" sortOrder="30"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Font Size (px)</label>
+                    <comment>Font size in pixels.</comment>
+                    <validate>required-entry validate-digits</validate>
+                </field>
+
+                <field id="border_radius" translate="label comment" type="text" sortOrder="40"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Border Radius (px)</label>
+                    <comment>Border radius in pixels. Ignored for pill and pill_outline styles (forced to 999px). Ignored for text_only.</comment>
+                    <validate>required-entry validate-digits</validate>
+                </field>
+
+                <field id="padding" translate="label comment" type="text" sortOrder="50"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Padding</label>
+                    <comment>CSS padding value (e.g., 2px 8px). Ignored for text_only style.</comment>
+                    <validate>required-entry</validate>
+                </field>
+
+                <field id="font_weight" translate="label comment" type="select" sortOrder="60"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Font Weight</label>
+                    <source_model>Rollpix\DiscountBadge\Model\Config\Source\FontWeight</source_model>
+                </field>
+            </group>
+
+            <!-- Listing Styles -->
+            <group id="listing_styles" translate="label comment" sortOrder="30"
+                   showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Styles - Product Listing</label>
+                <comment>Visual styles for the badge in category pages, search results, widgets, etc.</comment>
+
+                <field id="background_color" translate="label comment" type="text" sortOrder="10"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Background Color</label>
+                    <comment>Hex color code (e.g., #E91E8C). For outline/pill_outline styles, this sets the border and text color. For text_only, this sets the text color.</comment>
+                    <validate>required-entry</validate>
+                </field>
+
+                <field id="text_color" translate="label comment" type="text" sortOrder="20"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text Color</label>
+                    <comment>Hex color code (e.g., #FFFFFF). Used in filled and pill styles.</comment>
+                    <validate>required-entry</validate>
+                </field>
+
+                <field id="font_size" translate="label comment" type="text" sortOrder="30"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Font Size (px)</label>
+                    <comment>Font size in pixels.</comment>
+                    <validate>required-entry validate-digits</validate>
+                </field>
+
+                <field id="border_radius" translate="label comment" type="text" sortOrder="40"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Border Radius (px)</label>
+                    <comment>Border radius in pixels. Ignored for pill and pill_outline styles (forced to 999px). Ignored for text_only.</comment>
+                    <validate>required-entry validate-digits</validate>
+                </field>
+
+                <field id="padding" translate="label comment" type="text" sortOrder="50"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Padding</label>
+                    <comment>CSS padding value (e.g., 2px 6px). Ignored for text_only style.</comment>
+                    <validate>required-entry</validate>
+                </field>
+
+                <field id="font_weight" translate="label comment" type="select" sortOrder="60"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Font Weight</label>
+                    <source_model>Rollpix\DiscountBadge\Model\Config\Source\FontWeight</source_model>
+                </field>
+            </group>
+
+            <!-- Custom CSS -->
+            <group id="custom_css" translate="label comment" sortOrder="40"
+                   showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Custom CSS</label>
+                <comment>Add custom CSS to override badge styles for specific store needs.</comment>
+
+                <field id="custom_css" translate="label comment" type="textarea" sortOrder="10"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Custom CSS</label>
+                    <comment><![CDATA[Custom CSS injected in the <head>. Use .rollpix-discount-badge and modifier classes for targeting. Example: .rollpix-discount-badge--pdp { font-size: 18px !important; }]]></comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

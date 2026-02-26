@@ -1,0 +1,21 @@
+<?php
+
+declare(strict_types=1);
+
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Rollpix\DiscountBadge\ViewModel\DiscountBadge $viewModel */
+$viewModel = $block->getData('view_model');
+
+if (!$viewModel->isEnabled()) {
+    return;
+}
+
+$jsConfig = $viewModel->getJsConfig();
+?>
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Rollpix_DiscountBadge/js/discount-badge": <?= /* @noEscape */ json_encode($jsConfig, JSON_UNESCAPED_SLASHES) ?>
+    }
+}
+</script>

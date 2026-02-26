@@ -1,0 +1,52 @@
+/**
+ * Rollpix Discount Badge - Base Styles
+ *
+ * Inline styles are applied dynamically via JS from admin config.
+ * These base styles provide structural defaults and positional classes.
+ */
+
+.rollpix-discount-badge {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1.4;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+/* Inline positions (before/after old price) */
+.rollpix-discount-badge--inline {
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+/* Below price position */
+.rollpix-discount-badge--below {
+    display: block;
+    margin-top: 4px;
+}
+
+/* Over-image positions */
+.rollpix-discount-badge--over-image {
+    position: absolute;
+    z-index: 5;
+}
+
+.rollpix-discount-badge--top-left {
+    top: 8px;
+    left: 8px;
+}
+
+.rollpix-discount-badge--top-right {
+    top: 8px;
+    right: 8px;
+}
+
+.rollpix-discount-badge--bottom-left {
+    bottom: 8px;
+    left: 8px;
+}
+
+.rollpix-discount-badge--bottom-right {
+    bottom: 8px;
+    right: 8px;
+}

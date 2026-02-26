@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Rollpix_DiscountBadge::css/discount-badge.css"/>
+    </head>
+    <body>
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="rollpix.discount.badge.config"
+                   template="Rollpix_DiscountBadge::badge-config.phtml"
+                   cacheable="true">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Rollpix\DiscountBadge\ViewModel\DiscountBadge</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Framework\View\Element\Template"
+                   name="rollpix.discount.badge.custom.css"
+                   template="Rollpix_DiscountBadge::custom-css.phtml"
+                   cacheable="true">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Rollpix\DiscountBadge\ViewModel\DiscountBadge</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

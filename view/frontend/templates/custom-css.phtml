@@ -1,0 +1,21 @@
+<?php
+
+declare(strict_types=1);
+
+/** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Rollpix\DiscountBadge\ViewModel\DiscountBadge $viewModel */
+$viewModel = $block->getData('view_model');
+
+if (!$viewModel->isEnabled()) {
+    return;
+}
+
+$customCss = $viewModel->getCustomCss();
+
+if (empty(trim($customCss))) {
+    return;
+}
+?>
+<style>
+<?= /* @noEscape */ $customCss ?>
+</style>
