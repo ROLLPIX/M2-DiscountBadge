@@ -38,14 +38,7 @@
                     <validate>required-entry</validate>
                 </field>
 
-                <field id="position" translate="label comment" type="select" sortOrder="40"
-                       showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Badge Position</label>
-                    <comment>Where to display the badge relative to the price.</comment>
-                    <source_model>Rollpix\DiscountBadge\Model\Config\Source\BadgePosition</source_model>
-                </field>
-
-                <field id="badge_style" translate="label comment" type="select" sortOrder="50"
+                <field id="badge_style" translate="label comment" type="select" sortOrder="40"
                        showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Badge Style</label>
                     <comment>Visual style variant of the badge.</comment>
@@ -58,6 +51,13 @@
                    showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Styles - Product Detail Page (PDP)</label>
                 <comment>Visual styles for the badge on the product detail page.</comment>
+
+                <field id="position" translate="label comment" type="select" sortOrder="5"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Badge Position</label>
+                    <comment>Where to display the badge on the product detail page.</comment>
+                    <source_model>Rollpix\DiscountBadge\Model\Config\Source\BadgePosition</source_model>
+                </field>
 
                 <field id="background_color" translate="label comment" type="text" sortOrder="10"
                        showInDefault="1" showInWebsite="1" showInStore="1">
@@ -106,6 +106,13 @@
                    showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Styles - Product Listing</label>
                 <comment>Visual styles for the badge in category pages, search results, widgets, etc.</comment>
+
+                <field id="position" translate="label comment" type="select" sortOrder="5"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Badge Position</label>
+                    <comment>Where to display the badge in product listings.</comment>
+                    <source_model>Rollpix\DiscountBadge\Model\Config\Source\BadgePosition</source_model>
+                </field>
 
                 <field id="background_color" translate="label comment" type="text" sortOrder="10"
                        showInDefault="1" showInWebsite="1" showInStore="1">

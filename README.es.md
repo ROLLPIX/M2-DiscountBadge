@@ -18,7 +18,8 @@ Badge dinámico de porcentaje de descuento para precios de productos en Magento 
 ### Vía Composer (recomendado)
 
 ```bash
-composer require rollpix/module-discount-badge
+composer config repositories.rollpix-discount-badge vcs https://github.com/ROLLPIX/M2-DiscountBadge.git
+composer require rollpix/module-discount-badge:1.0.0
 bin/magento module:enable Rollpix_DiscountBadge
 bin/magento setup:upgrade
 bin/magento cache:flush

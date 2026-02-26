@@ -13,10 +13,12 @@
     box-sizing: border-box;
 }
 
-/* Inline positions (before/after old price) */
-.rollpix-discount-badge--inline {
-    margin-left: 6px;
-    margin-right: 6px;
+/* Wrapper that forces old price + badge on the same line */
+.rollpix-discount-badge-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: nowrap;
 }
 
 /* Below price position */

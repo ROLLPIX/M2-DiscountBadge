@@ -153,7 +153,7 @@ define(['jquery'], function ($) {
             var isPdp = $('body').hasClass('catalog-product-view');
             var styles = isPdp ? config.pdpStyles : config.listingStyles;
             var badgeStyle = config.badgeStyle;
-            var position = config.position;
+            var position = styles.position;
 
             // Build CSS classes
             var classes = [BADGE_CLASS];
@@ -168,7 +168,7 @@ define(['jquery'], function ($) {
                 classes.push(BADGE_CLASS + '--' + posKey.replace(/_/g, '-'));
             } else if (position === 'below_price') {
                 classes.push(BADGE_CLASS + '--below');
-            } else {
+            } else if (position === 'left_of_old_price' || position === 'right_of_old_price') {
                 classes.push(BADGE_CLASS + '--inline');
             }
 
@@ -245,15 +245,17 @@ define(['jquery'], function ($) {
          * @param {jQuery} $badge
          */
         _placeBadge: function ($priceBox, $badge) {
-            var position = config.position;
+            var isPdp = $('body').hasClass('catalog-product-view');
+            var styles = isPdp ? config.pdpStyles : config.listingStyles;
+            var position = styles.position;
 
             switch (position) {
-                case 'after_old_price':
-                    this._placeInline($priceBox, $badge, 'after');
+                case 'right_of_old_price':
+                    this._placeInline($priceBox, $badge, 'right');
                     break;
 
-                case 'before_old_price':
-                    this._placeInline($priceBox, $badge, 'before');
+                case 'left_of_old_price':
+                    this._placeInline($priceBox, $badge, 'left');
                     break;
 
                 case 'below_price':
@@ -270,19 +272,28 @@ define(['jquery'], function ($) {
         },
 
         /**
-         * Place badge inline with the old price
+         * Place badge inline with the old price using a flex wrapper
+         * to guarantee both elements stay on the same line.
          * @param {jQuery} $priceBox
          * @param {jQuery} $badge
-         * @param {string} placement - 'before' or 'after'
+         * @param {string} side - 'left' or 'right'
          */
-        _placeInline: function ($priceBox, $badge, placement) {
+        _placeInline: function ($priceBox, $badge, side) {
             var $oldPrice = $priceBox.find('.old-price').first();
 
             if ($oldPrice.length) {
-                if (placement === 'after') {
-                    $oldPrice.after($badge);
+                // Reuse existing wrapper or create one
+                var $wrapper = $oldPrice.parent('.rollpix-discount-badge-wrapper');
+
+                if (!$wrapper.length) {
+                    $oldPrice.wrap('<span class="rollpix-discount-badge-wrapper"></span>');
+                    $wrapper = $oldPrice.parent();
+                }
+
+                if (side === 'right') {
+                    $wrapper.append($badge);
                 } else {
-                    $oldPrice.before($badge);
+                    $wrapper.prepend($badge);
                 }
             } else {
                 // Fallback: append to priceBox

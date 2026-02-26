@@ -25,7 +25,6 @@ class DiscountBadge implements ArgumentInterface
             'enabled' => $this->config->isEnabled(),
             'minDiscount' => $this->config->getMinDiscount(),
             'textTemplate' => $this->config->getTextTemplate(),
-            'position' => $this->config->getPosition(),
             'badgeStyle' => $this->config->getBadgeStyle(),
             'pdpStyles' => $this->config->getPdpStyles(),
             'listingStyles' => $this->config->getListingStyles(),

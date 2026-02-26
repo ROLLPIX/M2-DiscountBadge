@@ -40,14 +40,6 @@ class Config
         );
     }
 
-    public function getPosition(): string
-    {
-        return (string) $this->scopeConfig->getValue(
-            self::XML_PATH_PREFIX . 'general/position',
-            ScopeInterface::SCOPE_STORE
-        );
-    }
-
     public function getBadgeStyle(): string
     {
         return (string) $this->scopeConfig->getValue(
@@ -79,6 +71,10 @@ class Config
         $prefix = self::XML_PATH_PREFIX . $group . '/';
 
         return [
+            'position' => (string) $this->scopeConfig->getValue(
+                $prefix . 'position',
+                ScopeInterface::SCOPE_STORE
+            ),
             'backgroundColor' => (string) $this->scopeConfig->getValue(
                 $prefix . 'background_color',
                 ScopeInterface::SCOPE_STORE

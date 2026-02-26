@@ -14,8 +14,8 @@ class BadgePosition implements OptionSourceInterface
     public function toOptionArray(): array
     {
         return [
-            ['value' => 'after_old_price', 'label' => __('After old price (inline)')],
-            ['value' => 'before_old_price', 'label' => __('Before old price (inline)')],
+            ['value' => 'right_of_old_price', 'label' => __('Right of old price (same line)')],
+            ['value' => 'left_of_old_price', 'label' => __('Left of old price (same line)')],
             ['value' => 'over_image_top_left', 'label' => __('Over image — top left')],
             ['value' => 'over_image_top_right', 'label' => __('Over image — top right')],
             ['value' => 'over_image_bottom_left', 'label' => __('Over image — bottom left')],
